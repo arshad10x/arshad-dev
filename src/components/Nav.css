@@ -1,0 +1,102 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px clamp(20px, 6vw, 64px);
+  background: linear-gradient(to bottom, rgba(21, 22, 26, 0.9), rgba(21, 22, 26, 0));
+  transition: padding 0.3s ease, background-color 0.3s ease;
+}
+
+/* Once the page is moving, the bar becomes solid so content never
+   shows through the links. */
+.nav.is-scrolled {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  background: rgba(21, 22, 26, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(237, 230, 214, 0.08);
+}
+
+.nav-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-seal {
+  width: 30px;
+  height: 30px;
+  background: var(--vermillion);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--washi);
+  flex-shrink: 0;
+}
+
+.nav-name {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 3vw, 40px);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--washi-dim);
+}
+
+.nav-links a {
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.25s ease;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--vermillion);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  color: var(--washi);
+}
+
+.nav-links a.is-active::after,
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+@media (max-width: 640px) {
+  /* visually hidden on phones but still the link's accessible name */
+  .nav-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .nav-links {
+    gap: 16px;
+    font-size: 13px;
+  }
+}

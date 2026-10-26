@@ -1,0 +1,119 @@
+.journey {
+  padding: clamp(52px, 7vw, 84px) 0;
+}
+
+.journey-header {
+  margin-bottom: 40px;
+}
+
+.journey-header h2 {
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+.journey-track {
+  --date-w: 190px;
+  --dot-w: 40px;
+  --gap: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.journey-axis-track {
+  position: absolute;
+  left: var(--axis-x, calc(var(--date-w) + var(--gap) + (var(--dot-w) / 2)));
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  margin-left: -1px;
+  display: none;
+}
+
+.journey-axis-fill {
+  width: 100%;
+  height: 100%;
+  background: var(--vermillion);
+  opacity: 0.5;
+  transform: scaleY(0);
+}
+
+.journey-entry {
+  display: grid;
+  grid-template-columns: var(--date-w) var(--dot-w) 1fr;
+  gap: var(--gap);
+  align-items: flex-start;
+}
+
+.journey-date {
+  font-size: 15px;
+  color: var(--muted-2);
+  text-align: right;
+  padding-top: 2px;
+}
+
+.journey-dot-col {
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+}
+
+.journey-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--washi);
+  display: block;
+}
+
+/* the role you're in now stays marked even without scroll animation */
+.is-current .journey-dot {
+  background: var(--vermillion);
+}
+
+.journey-content h3 {
+  font-size: 21px;
+  margin-bottom: 4px;
+}
+
+.journey-org {
+  font-size: 14px;
+  color: var(--vermillion-text);
+  margin-bottom: 10px;
+}
+
+.journey-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--washi-dim);
+  max-width: 580px;
+}
+
+@media (min-width: 760px) {
+  .journey-axis-track {
+    display: block;
+  }
+}
+
+@media (max-width: 759px) {
+  .journey-track {
+    --date-w: 0px;
+    gap: 40px;
+  }
+  .journey-entry {
+    grid-template-columns: var(--dot-w) 1fr;
+    grid-template-areas: "dot date" "dot content";
+    row-gap: 4px;
+  }
+  .journey-date {
+    grid-area: date;
+    text-align: left;
+    padding-top: 0;
+  }
+  .journey-dot-col {
+    grid-area: dot;
+  }
+  .journey-content {
+    grid-area: content;
+  }
+}

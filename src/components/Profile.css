@@ -1,0 +1,123 @@
+.profile {
+  position: relative;
+  padding: clamp(52px, 7vw, 84px) 0;
+  overflow: hidden;
+}
+
+.profile-watermark {
+  left: clamp(20px, 5vw, 70px);
+  top: 60px;
+  writing-mode: vertical-rl;
+  font-size: clamp(64px, 11vw, 120px);
+  letter-spacing: 0.1em;
+  display: none;
+}
+
+.profile-inner {
+  position: relative;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.5fr;
+  gap: 70px;
+  align-items: start;
+}
+
+/* ---- left column: kumiko lattice (decorative) ---- */
+.profile-left {
+  padding-top: 6px;
+}
+
+.profile-lattice {
+  width: 100%;
+  aspect-ratio: 1 / 1.15;
+  max-width: 280px;
+  opacity: 0.55;
+}
+
+/* ---- right column: pull-quote + bio + skill ledger ---- */
+.profile-right {
+  padding-top: 4px;
+}
+
+.profile-kicker {
+  font-family: var(--serif);
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.3;
+  color: var(--washi);
+  margin-bottom: 28px;
+  max-width: 620px;
+}
+
+.profile-kicker em {
+  font-style: normal;
+  color: var(--vermillion-text);
+}
+
+.profile-bio {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--washi-dim);
+  max-width: 580px;
+  margin-bottom: 44px;
+}
+
+/* ---- proof: the numbers behind the pitch ---- */
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 34px 40px;
+  margin: 0;
+  max-width: 560px;
+}
+
+.profile-stat-num {
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 58px);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--washi);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.profile-stat-num small {
+  font-size: 15px;
+  color: var(--vermillion-text);
+  font-family: var(--sans);
+  font-weight: 700;
+}
+
+.profile-stat-label {
+  margin: 10px 0 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted-2);
+  border-left: 2px solid var(--vermillion);
+  padding-left: 10px;
+}
+
+@media (max-width: 860px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .profile-left {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-stats {
+    gap: 28px 20px;
+  }
+}
+
+@media (min-width: 1040px) {
+  .profile-watermark {
+    display: flex;
+  }
+}
