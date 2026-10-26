@@ -148,13 +148,14 @@ export default function Hero() {
     return () => ctx.revert();
   }, []);
 
+
   return (
     <section className="hero" id="top" ref={rootRef}>
       <div className="hero-body container">
         <div className="hero-copy">
           <div className="eyebrow">
             <span className="mark" />
-            <span>Frontend developer</span>
+            <span>Fullstack developer</span>
           </div>
 
           <div className="hero-name-wrap">
@@ -207,20 +208,18 @@ export default function Hero() {
             </svg>
 
             <div className="hero-hanko" ref={hankoRef}>
-              <span>匠</span>
+              <span>10x</span>
             </div>
           </div>
 
           <p className="hero-sub">
-            Frontend developer and QA engineer building React and JavaScript
-            interfaces with a craftsman&rsquo;s care, and testing the REST APIs
-            behind them: auth, RBAC, negative cases and SQL validation.
+            Fullstack developer with a QA background — I build React and Laravel applications, then test them the way someone trying to break in would.
           </p>
 
           <ul className="hero-meta" aria-label="Main stack">
             <li>React</li>
-            <li>TypeScript</li>
-            <li>Next.js</li>
+            <li>JavaScript</li>
+            <li>Flutter</li>
             <li className="hero-meta-aside">Laravel &amp; SQL on the backend</li>
           </ul>
 
@@ -271,7 +270,7 @@ export default function Hero() {
       </div>
 
       <div className="hero-tategaki" ref={tategakiRef}>
-        CRAFTED WITH CARE — FRONTEND ENGINEER — 2026
+        PRECISION IN EVERY LINE — FULLSTACK DEVELOPER — 2026
       </div>
 
       <div className="hero-bottom">

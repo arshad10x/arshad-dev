@@ -282,8 +282,8 @@ export default function Letter() {
       </div>
 
       <footer className="letter-footer">
-        <span className="letter-footer-seal">匠</span>
-        <span>Ars10x — OCT 2026</span>
+        {/* <span className="letter-footer-seal">匠</span> */}
+        <span>Ars10x — Oct 2026</span>
       </footer>
     </section>
   );

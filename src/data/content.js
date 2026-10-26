@@ -161,7 +161,7 @@ export const journey = [
   },
   {
     date: "Dec 2024 – now",
-    role: "Software Developer",
+    role: "Software Engineer",
     org: "Yasham Software",
     // TODO(Arshad): placeholder — swap in your actual responsibilities /
     // wins at Yasham for the real copy.

@@ -208,18 +208,18 @@ export default function Profile() {
 
           <div className="profile-right">
             <p className="profile-kicker" ref={kickerRef}>
-              I build frontend systems with{" "}
-              <em>a craftsman&rsquo;s patience</em> — clean architecture,
-              considered motion, and interfaces that hold up under real use.
+              I build frontend systems the way a <em>QA engineer builds trust</em> —
+              clean architecture, considered motion, and interfaces tested before
+              they&rsquo;re trusted.
             </p>
 
             <p className="profile-bio" ref={bioRef}>
-              Frontend developer working mainly in React, TypeScript and
-              Next.js, with Node.js, Laravel and SQL as supporting skills.
-              Quick to pick up new tools, and used to shaping efficient,
-              clean, user-friendly builds directly with clients — currently
-              open for freelance work and looking for something worth the
-              attention.
+              Fullstack developer working mainly in React, JavaScript and Flutter,
+              with Laravel and SQL on the backend. Started in QA, so testing
+              isn&rsquo;t an afterthought — it&rsquo;s built into how I ship. Quick
+              to pick up new tools, and used to shaping clean, user-friendly builds
+              directly with clients — currently open for freelance work and looking
+              for something worth the attention.
             </p>
 
             <dl className="profile-stats">

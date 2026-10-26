@@ -9,17 +9,18 @@
   justify-content: space-between;
   padding: 24px clamp(20px, 6vw, 64px);
   background: linear-gradient(to bottom, rgba(21, 22, 26, 0.9), rgba(21, 22, 26, 0));
-  transition: padding 0.3s ease, background-color 0.3s ease;
+  transition: padding 0.3s ease, background-color 0.4s ease, backdrop-filter 0.4s ease,
+    box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-/* Once the page is moving, the bar becomes solid so content never
-   shows through the links. */
 .nav.is-scrolled {
   padding-top: 14px;
   padding-bottom: 14px;
-  background: rgba(21, 22, 26, 0.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(237, 230, 214, 0.08);
+  background: rgba(21, 22, 26, 0.55);
+  backdrop-filter: blur(18px) saturate(1.6);
+  -webkit-backdrop-filter: blur(18px) saturate(1.6);
+  border-bottom: 1px solid rgba(237, 230, 214, 0.1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 8px 32px -12px rgba(0, 0, 0, 0.5);
 }
 
 .nav-mark {
@@ -29,22 +30,46 @@
 }
 
 .nav-seal {
-  width: 30px;
-  height: 30px;
+  position: relative;
+  width: auto;
+  height: 32px;
+  padding: 0 12px;
   background: var(--vermillion);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--serif);
-  font-size: 14px;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 12px;
   color: var(--washi);
-  flex-shrink: 0;
+  white-space: nowrap;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.nav-seal-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--washi);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .nav-name {
   font-family: var(--serif);
   font-size: 19px;
   letter-spacing: 0.02em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -86,7 +111,7 @@
 }
 
 @media (max-width: 640px) {
-  /* visually hidden on phones but still the link's accessible name */
+
   .nav-name {
     position: absolute;
     width: 1px;
@@ -95,6 +120,7 @@
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
+
   .nav-links {
     gap: 16px;
     font-size: 13px;

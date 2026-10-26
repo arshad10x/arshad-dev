@@ -13,21 +13,35 @@ const LINKS = [
 
 export default function Nav() {
   const navRef = useRef(null);
+  const sealRef = useRef(null);
+  const rippleRef = useRef(null);
   const [active, setActive] = useState("");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    if (prefersReducedMotion()) return;
-    gsap.from(navRef.current, {
-      y: -24,
-      opacity: 0,
-      duration: 1,
-      delay: 0.2,
-      ease: "power3.out",
+    if (prefersReducedMotion()) return undefined;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        navRef.current,
+        { y: -24, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          delay: 0.2,
+          ease: "power3.out",
+          overwrite: "auto",
+          onComplete: () => {
+            gsap.set(navRef.current, { clearProps: "opacity,transform" });
+          },
+        }
+      );
     });
+
+    return () => ctx.revert();
   }, []);
 
-  // Highlight whichever section crosses the middle of the viewport.
   useEffect(() => {
     const sections = LINKS.map((l) => document.getElementById(l.id)).filter(Boolean);
     const io = new IntersectionObserver(
@@ -57,11 +71,33 @@ export default function Nav() {
     };
   }, []);
 
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+
+    if (!prefersReducedMotion()) {
+      gsap
+        .timeline()
+        .to(sealRef.current, { scale: 0.9, duration: 0.1, ease: "power2.in" })
+        .to(sealRef.current, { scale: 1, duration: 0.35, ease: "elastic.out(1,0.45)" })
+        .fromTo(
+          rippleRef.current,
+          { scale: 0.6, opacity: 0.5 },
+          { scale: 2.2, opacity: 0, duration: 0.6, ease: "power2.out" },
+          "<"
+        );
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <header className={"nav" + (scrolled ? " is-scrolled" : "")} ref={navRef}>
-      <a className="nav-mark" href="#top">
-        <span className="nav-seal" aria-hidden="true">匠</span>
-        <span className="nav-name">Arshad</span>
+      <a className="nav-mark" href="#top" onClick={handleLogoClick}>
+        <span className="nav-seal" ref={sealRef} aria-hidden="true">
+          @Arsh10x
+          <span className="nav-seal-ripple" ref={rippleRef} />
+        </span>
+        <span className="sr-only">Arsh10x — back to top</span>
       </a>
       <nav aria-label="Primary">
         <ul className="nav-links">
